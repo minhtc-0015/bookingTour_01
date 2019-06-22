@@ -1,0 +1,476 @@
+<!DOCTYPE HTML>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>Tour Template</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="" />
+<meta name="keywords" content="" />
+<meta name="author" content="" />
+
+<!-- Facebook and Twitter integration -->
+<meta property="og:title" content="" />
+<meta property="og:image" content="" />
+<meta property="og:url" content="" />
+<meta property="og:site_name" content="" />
+<meta property="og:description" content="" />
+<meta name="twitter:title" content="" />
+<meta name="twitter:image" content="" />
+<meta name="twitter:url" content="" />
+<meta name="twitter:card" content="" />
+
+<!-- starting css -->
+<div th:replace="static/css :: css">...</div>
+<!-- end css -->
+
+
+<!-- Modernizr JS -->
+<script th:src="@{/assets/js/modernizr-2.6.2.min.js}"></script>
+<!-- FOR IE9 below -->
+<!--[if lt IE 9]>
+	<script th:src="@{/assets/js/respond.min.js}"></script>
+	<![endif]-->
+</head>
+<body>
+
+	<div class="colorlib-loader"></div>
+
+	<div id="page">
+
+		<!-- starting header -->
+		<div th:replace="static/header :: header">...</div>
+		<!-- end header -->
+		
+		<aside id="colorlib-hero">
+			<div class="flexslider">
+				<ul class="slides">
+			   	<li style="background-image: url(/BookingTour/assets/images/img_bg_3.jpg);">
+			   		<div class="overlay"></div>
+			   		<div class="container-fluid">
+			   			<div class="row">
+				   			<div class="col-md-6 col-md-offset-3 col-sm-12 col-xs-12 slider-text">
+				   				<div class="slider-text-inner text-center">
+				   					<h2>by colorlib.com</h2>
+				   					<h1>Find Tours</h1>
+				   				</div>
+				   			</div>
+				   		</div>
+			   		</div>
+			   	</li>
+			  	</ul>
+		  	</div>
+		</aside>
+
+		<div class="colorlib-wrap">
+			<div class="container">
+				<div class="row">
+					<div class="col-md-9">
+						<div class="row">
+							<div class="wrap-division">
+								<div class="col-md-6 col-sm-6 animate-box">
+									<div class="tour">
+										<a href="tour-place.html" class="tour-img"
+											style="background-image: url(/BookingTour/assets/images/tour-1.jpg);">
+											<p class="price">
+												<span>$1500</span> <small>/ 3 Days</small>
+											</p>
+										</a> <span class="desc">
+											<p class="star">
+												<span><i class="icon-star-full"></i><i
+													class="icon-star-full"></i><i class="icon-star-full"></i><i
+													class="icon-star-full"></i><i class="icon-star-full"></i></span>
+												545 Reviews
+											</p>
+											<h2>
+												<a href="tour-place.html">Family Tour in Greece</a>
+											</h2> <span class="city">Athens, Greece</span>
+										</span>
+									</div>
+								</div>
+
+								<div class="col-md-6 col-sm-6 animate-box">
+									<div class="tour">
+										<a href="tour-place.html" class="tour-img"
+											style="background-image: url(/BookingTour/assets/images/tour-2.jpg);">
+											<p class="price">
+												<span>$1500</span> <small>/ 3 Days</small>
+											</p>
+										</a> <span class="desc">
+											<p class="star">
+												<span><i class="icon-star-full"></i><i
+													class="icon-star-full"></i><i class="icon-star-full"></i><i
+													class="icon-star-full"></i><i class="icon-star-full"></i></span>
+												545 Reviews
+											</p>
+											<h2>
+												<a href="tour-place.html">Family Tour in Greece</a>
+											</h2> <span class="city">Athens, Greece</span>
+										</span>
+									</div>
+								</div>
+
+								<div class="col-md-6 col-sm-6 animate-box">
+									<div class="tour">
+										<a href="tour-place.html" class="tour-img"
+											style="background-image: url(/BookingTour/assets/images/tour-3.jpg);">
+											<p class="price">
+												<span>$1500</span> <small>/ 3 Days</small>
+											</p>
+										</a> <span class="desc">
+											<p class="star">
+												<span><i class="icon-star-full"></i><i
+													class="icon-star-full"></i><i class="icon-star-full"></i><i
+													class="icon-star-full"></i><i class="icon-star-full"></i></span>
+												545 Reviews
+											</p>
+											<h2>
+												<a href="tour-place.html">Family Tour in Greece</a>
+											</h2> <span class="city">Athens, Greece</span>
+										</span>
+									</div>
+								</div>
+
+								<div class="col-md-6 col-sm-6 animate-box">
+									<div class="tour">
+										<a href="tour-place.html" class="tour-img"
+											style="background-image: url(/BookingTour/assets/images/tour-4.jpg);">
+											<p class="price">
+												<span>$1500</span> <small>/ 3 Days</small>
+											</p>
+										</a> <span class="desc">
+											<p class="star">
+												<span><i class="icon-star-full"></i><i
+													class="icon-star-full"></i><i class="icon-star-full"></i><i
+													class="icon-star-full"></i><i class="icon-star-full"></i></span>
+												545 Reviews
+											</p>
+											<h2>
+												<a href="tour-place.html">Family Tour in Greece</a>
+											</h2> <span class="city">Athens, Greece</span>
+										</span>
+									</div>
+								</div>
+
+								<div class="col-md-6 col-sm-6 animate-box">
+									<div class="tour">
+										<a href="tour-place.html" class="tour-img"
+											style="background-image: url(/BookingTour/assets/images/tour-5.jpg);">
+											<p class="price">
+												<span>$1500</span> <small>/ 3 Days</small>
+											</p>
+										</a> <span class="desc">
+											<p class="star">
+												<span><i class="icon-star-full"></i><i
+													class="icon-star-full"></i><i class="icon-star-full"></i><i
+													class="icon-star-full"></i><i class="icon-star-full"></i></span>
+												545 Reviews
+											</p>
+											<h2>
+												<a href="tour-place.html">Family Tour in Greece</a>
+											</h2> <span class="city">Athens, Greece</span>
+										</span>
+									</div>
+								</div>
+
+								<div class="col-md-6 col-sm-6 animate-box">
+									<div class="tour">
+										<a href="tour-place.html" class="tour-img"
+											style="background-image: url(/BookingTour/assets/images/tour-6.jpg);">
+											<p class="price">
+												<span>$1500</span> <small>/ 3 Days</small>
+											</p>
+										</a> <span class="desc">
+											<p class="star">
+												<span><i class="icon-star-full"></i><i
+													class="icon-star-full"></i><i class="icon-star-full"></i><i
+													class="icon-star-full"></i><i class="icon-star-full"></i></span>
+												545 Reviews
+											</p>
+											<h2>
+												<a href="tour-place.html">Family Tour in Greece</a>
+											</h2> <span class="city">Athens, Greece</span>
+										</span>
+									</div>
+								</div>
+
+								<div class="col-md-6 col-sm-6 animate-box">
+									<div class="tour">
+										<a href="tour-place.html" class="tour-img"
+											style="background-image: url(/BookingTour/assets/images/tour-7.jpg);">
+											<p class="price">
+												<span>$1500</span> <small>/ 3 Days</small>
+											</p>
+										</a> <span class="desc">
+											<p class="star">
+												<span><i class="icon-star-full"></i><i
+													class="icon-star-full"></i><i class="icon-star-full"></i><i
+													class="icon-star-full"></i><i class="icon-star-full"></i></span>
+												545 Reviews
+											</p>
+											<h2>
+												<a href="tour-place.html">Family Tour in Greece</a>
+											</h2> <span class="city">Athens, Greece</span>
+										</span>
+									</div>
+								</div>
+
+								<div class="col-md-6 col-sm-6 animate-box">
+									<div class="tour">
+										<a href="tour-place.html" class="tour-img"
+											style="background-image: url(/BookingTour/assets/images/tour-8.jpg);">
+											<p class="price">
+												<span>$1500</span> <small>/ 3 Days</small>
+											</p>
+										</a> <span class="desc">
+											<p class="star">
+												<span><i class="icon-star-full"></i><i
+													class="icon-star-full"></i><i class="icon-star-full"></i><i
+													class="icon-star-full"></i><i class="icon-star-full"></i></span>
+												545 Reviews
+											</p>
+											<h2>
+												<a href="tour-place.html">Family Tour in Greece</a>
+											</h2> <span class="city">Athens, Greece</span>
+										</span>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-md-12 text-center">
+								<ul class="pagination">
+									<li class="disabled"><a href="#">&laquo;</a></li>
+									<li class="active"><a href="#">1</a></li>
+									<li><a href="#">2</a></li>
+									<li><a href="#">3</a></li>
+									<li><a href="#">4</a></li>
+									<li><a href="#">&raquo;</a></li>
+								</ul>
+							</div>
+						</div>
+					</div>
+
+					<!-- SIDEBAR-->
+					<div class="col-md-3">
+						<div class="sidebar-wrap">
+							<div class="side search-wrap animate-box">
+								<h3 class="sidebar-heading">Find your tour</h3>
+								<form method="post" class="colorlib-form">
+									<div class="row">
+										<div class="col-md-12">
+											<div class="form-group">
+												<label for="date">Where:</label>
+												<div class="form-field">
+													<input type="text" id="location" class="form-control"
+														placeholder="Search Location">
+												</div>
+											</div>
+										</div>
+										<div class="col-md-12">
+											<div class="form-group">
+												<label for="date">Check-in:</label>
+												<div class="form-field">
+													<i class="icon icon-calendar2"></i> <input type="text"
+														id="date" class="form-control date"
+														placeholder="Check-in date">
+												</div>
+											</div>
+										</div>
+										<div class="col-md-12">
+											<div class="form-group">
+												<label for="date">Check-out:</label>
+												<div class="form-field">
+													<i class="icon icon-calendar2"></i> <input type="text"
+														id="date" class="form-control date"
+														placeholder="Check-out date">
+												</div>
+											</div>
+										</div>
+										<div class="col-md-12">
+											<div class="form-group">
+												<label for="guests">Guest</label>
+												<div class="form-field">
+													<i class="icon icon-arrow-down3"></i> <select name="people"
+														id="people" class="form-control">
+														<option value="#">1</option>
+														<option value="#">2</option>
+														<option value="#">3</option>
+														<option value="#">4</option>
+														<option value="#">5+</option>
+													</select>
+												</div>
+											</div>
+										</div>
+										<div class="col-md-12">
+											<input type="submit" name="submit" id="submit"
+												value="Find Flights" class="btn btn-primary btn-block">
+										</div>
+									</div>
+								</form>
+							</div>
+							<div class="side animate-box">
+								<div class="row">
+									<div class="col-md-12">
+										<h3 class="sidebar-heading">Price Range</h3>
+										<form method="post" class="colorlib-form-2">
+											<div class="row">
+												<div class="col-md-6">
+													<div class="form-group">
+														<label for="guests">Price from:</label>
+														<div class="form-field">
+															<i class="icon icon-arrow-down3"></i> <select
+																name="people" id="people" class="form-control">
+																<option value="#">1</option>
+																<option value="#">200</option>
+																<option value="#">300</option>
+																<option value="#">400</option>
+																<option value="#">1000</option>
+															</select>
+														</div>
+													</div>
+												</div>
+												<div class="col-md-6">
+													<div class="form-group">
+														<label for="guests">Price to:</label>
+														<div class="form-field">
+															<i class="icon icon-arrow-down3"></i> <select
+																name="people" id="people" class="form-control">
+																<option value="#">2000</option>
+																<option value="#">4000</option>
+																<option value="#">6000</option>
+																<option value="#">8000</option>
+																<option value="#">10000</option>
+															</select>
+														</div>
+													</div>
+												</div>
+											</div>
+										</form>
+									</div>
+								</div>
+							</div>
+							<div class="side animate-box">
+								<div class="row">
+									<div class="col-md-12">
+										<h3 class="sidebar-heading">Review Rating</h3>
+										<form method="post" class="colorlib-form-2">
+											<div class="form-check">
+												<input type="checkbox" class="form-check-input"
+													id="exampleCheck1"> <label class="form-check-label"
+													for="exampleCheck1">
+													<p class="rate">
+														<span><i class="icon-star-full"></i><i
+															class="icon-star-full"></i><i class="icon-star-full"></i><i
+															class="icon-star-full"></i><i class="icon-star-full"></i></span>
+													</p>
+												</label>
+											</div>
+											<div class="form-check">
+												<input type="checkbox" class="form-check-input"
+													id="exampleCheck1"> <label class="form-check-label"
+													for="exampleCheck1">
+													<p class="rate">
+														<span><i class="icon-star-full"></i><i
+															class="icon-star-full"></i><i class="icon-star-full"></i><i
+															class="icon-star-full"></i></span>
+													</p>
+												</label>
+											</div>
+											<div class="form-check">
+												<input type="checkbox" class="form-check-input"
+													id="exampleCheck1"> <label class="form-check-label"
+													for="exampleCheck1">
+													<p class="rate">
+														<span><i class="icon-star-full"></i><i
+															class="icon-star-full"></i><i class="icon-star-full"></i></span>
+													</p>
+												</label>
+											</div>
+											<div class="form-check">
+												<input type="checkbox" class="form-check-input"
+													id="exampleCheck1"> <label class="form-check-label"
+													for="exampleCheck1">
+													<p class="rate">
+														<span><i class="icon-star-full"></i><i
+															class="icon-star-full"></i></span>
+													</p>
+												</label>
+											</div>
+											<div class="form-check">
+												<input type="checkbox" class="form-check-input"
+													id="exampleCheck1"> <label class="form-check-label"
+													for="exampleCheck1">
+													<p class="rate">
+														<span><i class="icon-star-full"></i></span>
+													</p>
+												</label>
+											</div>
+										</form>
+									</div>
+								</div>
+							</div>
+							<div class="side animate-box">
+								<div class="row">
+									<div class="col-md-12">
+										<h3 class="sidebar-heading">Location</h3>
+										<form method="post" class="colorlib-form-2">
+											<div class="form-check">
+												<input type="checkbox" class="form-check-input"
+													id="exampleCheck1"> <label class="form-check-label"
+													for="exampleCheck1">
+													<h4 class="place">Greece</h4>
+												</label>
+											</div>
+											<div class="form-check">
+												<input type="checkbox" class="form-check-input"
+													id="exampleCheck1"> <label class="form-check-label"
+													for="exampleCheck1">
+													<h4 class="place">Italy</h4>
+												</label>
+											</div>
+											<div class="form-check">
+												<input type="checkbox" class="form-check-input"
+													id="exampleCheck1"> <label class="form-check-label"
+													for="exampleCheck1">
+													<h4 class="place">Spain</h4>
+												</label>
+											</div>
+											<div class="form-check">
+												<input type="checkbox" class="form-check-input"
+													id="exampleCheck1"> <label class="form-check-label"
+													for="exampleCheck1">
+													<h4 class="place">Germany</h4>
+												</label>
+											</div>
+											<div class="form-check">
+												<input type="checkbox" class="form-check-input"
+													id="exampleCheck1"> <label class="form-check-label"
+													for="exampleCheck1">
+													<h4 class="place">Japan</h4>
+												</label>
+											</div>
+										</form>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+
+		<!-- start footer -->
+		<div th:replace="static/footer :: footer">...</div>
+		<!-- end footer -->
+	</div>
+
+	<!-- start js -->
+	<div th:replace="static/js :: js">...</div>
+	<!-- end js -->
+
+</body>
+</html>
+

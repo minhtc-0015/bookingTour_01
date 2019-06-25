@@ -7,4 +7,8 @@
 	<bean id="carDAO" class="app.dao.impl.CarDAOImpl">
 		<property name="sessionFactory" ref="sessionFactory" />
 	</bean>
+	
+	<bean id="userDAO" class="app.dao.impl.UserDAOImpl">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
 </beans>

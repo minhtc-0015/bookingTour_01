@@ -49,177 +49,39 @@
                             </div>
                             <!-- /.box-header -->
                             <!-- form start -->
-                            <form role="form">
+                            <form role="form" th:action="@{/admin/users/create/}" method="post"
+								th:object="${user}">
 
-                                <div class="box-body">
-                                    <div class="form-group">
-                                        <label for="exampleInputEmail1">Email address</label>
-                                        <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Enter email">
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="exampleInputPassword1">Password</label>
-                                        <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="exampleInputFile">File input</label>
-                                        <input type="file" id="exampleInputFile">
-
-                                        <p class="help-block">Example block-level help text here.</p>
-                                    </div>
-                                    <div class="checkbox">
-                                        <label>
-                                            <input type="checkbox"> Check me out
-                                        </label>
-                                    </div>
-
-                                    <!-- /action dropdown -->
-                                    <div class="input-group input-group-sm">
-                                        <div class="input-group-btn">
-                                            <button type="button" class="btn btn-warning dropdown-toggle" data-toggle="dropdown">Action
-                                                <span class="fa fa-caret-down"></span></button>
-                                            <ul class="dropdown-menu">
-                                                <li><a href="#">Action</a></li>
-                                                <li><a href="#">Another action</a></li>
-                                                <li><a href="#">Something else here</a></li>
-                                                <li class="divider"></li>
-                                                <li><a href="#">Separated link</a></li>
-                                            </ul>
-                                        </div>
-                                        <!-- /btn-group -->
-                                        <input type="text" class="form-control">
-                                    </div>
-                                    <!-- /.action dropdown -->
-
-                                    <!-- text input -->
-                                    <div class="form-group">
-                                        <label>Text</label>
-                                        <input type="text" class="form-control" placeholder="Enter ...">
-                                    </div>
-                                    <div class="form-group">
-                                        <label>Text Disabled</label>
-                                        <input type="text" class="form-control" placeholder="Enter ..." disabled>
-                                    </div>
-
-                                    <!-- textarea -->
-                                    <div class="form-group">
-                                        <label>Textarea</label>
-                                        <textarea class="form-control" rows="3" placeholder="Enter ..."></textarea>
-                                    </div>
-                                    <div class="form-group">
-                                        <label>Textarea Disabled</label>
-                                        <textarea class="form-control" rows="3" placeholder="Enter ..." disabled></textarea>
-                                    </div>
-
-                                    <!-- input states -->
-                                    <div class="form-group has-success">
-                                        <label class="control-label" for="inputSuccess"><i class="fa fa-check"></i> Input with success</label>
-                                        <input type="text" class="form-control" id="inputSuccess" placeholder="Enter ...">
-                                        <span class="help-block">Help block with success</span>
-                                    </div>
-                                    <div class="form-group has-warning">
-                                        <label class="control-label" for="inputWarning"><i class="fa fa-bell-o"></i> Input with warning
-                                        </label>
-                                        <input type="text" class="form-control" id="inputWarning" placeholder="Enter ...">
-                                        <span class="help-block">Help block with warning</span>
-                                    </div>
-                                    <div class="form-group has-error">
-                                        <label class="control-label" for="inputError"><i class="fa fa-times-circle-o"></i> Input with error
-                                        </label>
-                                        <input type="text" class="form-control" id="inputError" placeholder="Enter ...">
-                                        <span class="help-block">Help block with error</span>
-                                    </div>
-
-                                    <!-- checkbox -->
-                                    <div class="form-group">
-                                        <div class="checkbox">
-                                            <label>
-                                                <input type="checkbox"> Checkbox 1
-                                            </label>
-                                        </div>
-
-                                        <div class="checkbox">
-                                            <label>
-                                                <input type="checkbox"> Checkbox 2
-                                            </label>
-                                        </div>
-
-                                        <div class="checkbox">
-                                            <label>
-                                                <input type="checkbox" disabled> Checkbox disabled
-                                            </label>
-                                        </div>
-                                    </div>
-
-                                    <!-- radio -->
-                                    <div class="form-group">
-                                        <div class="radio">
-                                            <label>
-                                                <input type="radio" name="optionsRadios" id="optionsRadios1" value="option1" checked> Option one is this and that&mdash;be sure to include why it's great
-                                            </label>
-                                        </div>
-                                        <div class="radio">
-                                            <label>
-                                                <input type="radio" name="optionsRadios" id="optionsRadios2" value="option2"> Option two can be something else and selecting it will deselect option one
-                                            </label>
-                                        </div>
-                                        <div class="radio">
-                                            <label>
-                                                <input type="radio" name="optionsRadios" id="optionsRadios3" value="option3" disabled> Option three is disabled
-                                            </label>
-                                        </div>
-                                    </div>
-
-                                    <!-- select -->
-                                    <div class="form-group">
-                                        <label>Select</label>
-                                        <select class="form-control">
-                                            <option>option 1</option>
-                                            <option>option 2</option>
-                                            <option>option 3</option>
-                                            <option>option 4</option>
-                                            <option>option 5</option>
-                                        </select>
-                                    </div>
-                                    <div class="form-group">
-                                        <label>Select Disabled</label>
-                                        <select class="form-control" disabled>
-                                            <option>option 1</option>
-                                            <option>option 2</option>
-                                            <option>option 3</option>
-                                            <option>option 4</option>
-                                            <option>option 5</option>
-                                        </select>
-                                    </div>
-
-                                    <!-- Select multiple-->
-                                    <div class="form-group">
-                                        <label>Select Multiple</label>
-                                        <select multiple class="form-control">
-                                            <option>option 1</option>
-                                            <option>option 2</option>
-                                            <option>option 3</option>
-                                            <option>option 4</option>
-                                            <option>option 5</option>
-                                        </select>
-                                    </div>
-                                    <div class="form-group">
-                                        <label>Select Multiple Disabled</label>
-                                        <select multiple class="form-control" disabled>
-                                            <option>option 1</option>
-                                            <option>option 2</option>
-                                            <option>option 3</option>
-                                            <option>option 4</option>
-                                            <option>option 5</option>
-                                        </select>
-                                    </div>
-
-                                </div>
-                                <!-- /.box-body -->
-                                <div class="box-footer">
-                                    <button type="cancel" class="btn btn-default">Cancel</button>
-                                    <button type="submit" class="btn btn-info pull-right">Submit</button>
-                                </div>
-                            </form>
+								<div class="box-body">
+									<div class="form-group">
+										<label for="exampleInputUser1">Username</label>
+										<input class="form-control" id="exampleInputUser1"
+											placeholder="Enter username" th:field="*{username}">
+									</div>
+									<div class="form-group">
+										<label for="exampleInputPassword1">Password</label>
+										<input class="form-control" id="exampleInputPassword1"
+											placeholder="Enter password" th:field="*{password}">
+									</div>
+									<div class="form-group">
+										<label for="exampleInputEmail1">Email</label>
+										<input class="form-control" id="exampleInputEmail1"
+											placeholder="Enter email" th:field="*{email}">
+									</div>
+									<div class="form-group">
+										<label for="exampleInputAddress1">Address</label>
+										<input class="form-control" id="exampleInputAddress1"
+											placeholder="Enter address" th:field="*{address}">
+									</div>
+								</div>
+								<!-- /.box-body -->
+								<div class="box-footer">
+									<a th:href="@{/admin/users/}"><button
+											class="btn btn-default">Cancel</button></a>
+									<button type="submit" class="btn btn-info pull-right"
+										value="Save">Save</button>
+								</div>
+							</form>
                         </div>
                         <!-- /.box -->
                     </div>

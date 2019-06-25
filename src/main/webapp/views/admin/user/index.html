@@ -44,7 +44,7 @@
 							<div class="box-header">
 								<h3 class="box-title">
 									<button type="button" class="btn btn-default pull-right">
-										<a th:href="@{/admin/users/add}"><i class="fa fa-plus"></i> Add</a>
+										<a th:href="@{/admin/users/new}"><i class="fa fa-plus"></i> Add</a>
 									</button>
 									
 								</h3>
@@ -64,108 +64,13 @@
 										</tr>
 									</thead>
 									<tbody>
-										<tr>
-											<td>1</td>
-											<td>Hien Ho</td>
-											<td>0123456789</td>
-											<td>thuhien@gmail.com</td>
-											<td>123 abc</td>
+										<tr th:each="user : ${users}">
+											<td th:text=${user.id}></td>
+											<td th:text=${user.username}></td>
+											<td th:text=${user.phoneNumber}></td>
+											<td th:text=${user.email}></td>
+											<td th:text=${user.address}></td>
 											<td>Admin</td>
-											<td>
-												<button type="button" class="btn btn-default pull-right">
-													<i class="fa fa-pencil"></i>
-												</button>
-												<button type="button" class="btn btn-default pull-right">
-													<i class="fa fa-trash"></i>
-												</button>
-												<button type="button" class="btn btn-default pull-right">
-													<i class="fa fa-gg"></i>
-												</button>
-											</td>
-										</tr>
-										<tr>
-											<td>2</td>
-											<td>Chau Vuong</td>
-											<td>0123456789</td>
-											<td>chau@gmail.com</td>
-											<td>123 abc</td>
-											<td>Admin</td>
-											<td>
-												<button type="button" class="btn btn-default pull-right">
-													<i class="fa fa-pencil"></i>
-												</button>
-												<button type="button" class="btn btn-default pull-right">
-													<i class="fa fa-trash"></i>
-												</button>
-												<button type="button" class="btn btn-default pull-right">
-													<i class="fa fa-gg"></i>
-												</button>
-											</td>
-										</tr>
-										<tr>
-											<td>3</td>
-											<td>Hien Ho</td>
-											<td>0123456789</td>
-											<td>thuhien@gmail.com</td>
-											<td>123 abc</td>
-											<td>Admin</td>
-											<td>
-												<button type="button" class="btn btn-default pull-right">
-													<i class="fa fa-pencil"></i>
-												</button>
-												<button type="button" class="btn btn-default pull-right">
-													<i class="fa fa-trash"></i>
-												</button>
-												<button type="button" class="btn btn-default pull-right">
-													<i class="fa fa-gg"></i>
-												</button>
-											</td>
-										</tr>
-										<tr>
-											<td>4</td>
-											<td>Minh Tran</td>
-											<td>0123456789</td>
-											<td>minh@gmail.com</td>
-											<td>123 abc</td>
-											<td>Admin</td>
-											<td>
-												<button type="button" class="btn btn-default pull-right">
-													<i class="fa fa-pencil"></i>
-												</button>
-												<button type="button" class="btn btn-default pull-right">
-													<i class="fa fa-trash"></i>
-												</button>
-												<button type="button" class="btn btn-default pull-right">
-													<i class="fa fa-gg"></i>
-												</button>
-											</td>
-										</tr>
-										<tr>
-											<td>5</td>
-											<td>Bach Khoa</td>
-											<td>0123456789</td>
-											<td>bk@gmail.com</td>
-											<td>123 abc</td>
-											<td>Editor</td>
-											<td>
-												<button type="button" class="btn btn-default pull-right">
-													<i class="fa fa-pencil"></i>
-												</button>
-												<button type="button" class="btn btn-default pull-right">
-													<i class="fa fa-trash"></i>
-												</button>
-												<button type="button" class="btn btn-default pull-right">
-													<i class="fa fa-gg"></i>
-												</button>
-											</td>
-										</tr>
-										<tr>
-											<td>6</td>
-											<td>Teohiho</td>
-											<td>0123456789</td>
-											<td>teo@gmail.com</td>
-											<td>123 abc</td>
-											<td>Editor</td>
 											<td>
 												<button type="button" class="btn btn-default pull-right">
 													<i class="fa fa-pencil"></i>

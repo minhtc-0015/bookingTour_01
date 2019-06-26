@@ -8,5 +8,7 @@ import app.model.Car;
 public interface CarService extends BaseService<Integer, Car> {
 	boolean deleteCar(Integer id);
 
-	List<Car> loadCars();
+	List<Car> loadCars(Integer offsets,Integer maxResults);
+	
+	long countCar();
 }

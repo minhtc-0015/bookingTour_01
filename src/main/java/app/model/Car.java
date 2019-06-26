@@ -7,6 +7,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+
+
 @Entity
 @Table(name = "cars")
 public class Car {
@@ -14,9 +16,10 @@ public class Car {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "id")
 	private int id;
-
+     
 	@Column(name = "number_of_seater")
 	private int numberOfSeater;
+
 
 	@Column(name = "license_plate")
 	private String licensePlate;

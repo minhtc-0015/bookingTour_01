@@ -4,6 +4,8 @@ D:\TEO TEO\STUDY\SUN_INTERN\Code\bookingTour_01\src\main\java\app\service\UserSe
 D:\TEO TEO\STUDY\SUN_INTERN\Code\bookingTour_01\src\main\java\app\service\CarService.java
 D:\TEO TEO\STUDY\SUN_INTERN\Code\bookingTour_01\src\main\java\app\controller\admin\IndexController.java
 D:\TEO TEO\STUDY\SUN_INTERN\Code\bookingTour_01\src\main\java\app\model\Role.java
+D:\TEO TEO\STUDY\SUN_INTERN\Code\bookingTour_01\src\main\java\app\validator\CarValidator.java
+D:\TEO TEO\STUDY\SUN_INTERN\Code\bookingTour_01\src\main\java\app\controller\AuthController.java
 D:\TEO TEO\STUDY\SUN_INTERN\Code\bookingTour_01\src\main\java\app\dao\GenericDAO.java
 D:\TEO TEO\STUDY\SUN_INTERN\Code\bookingTour_01\src\main\java\app\dao\impl\CarDAOImpl.java
 D:\TEO TEO\STUDY\SUN_INTERN\Code\bookingTour_01\src\main\java\app\dao\BaseDAO.java

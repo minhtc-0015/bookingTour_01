@@ -2,6 +2,11 @@ package app.model;
 
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
+
+import org.hibernate.validator.constraints.Email;
+import org.hibernate.validator.constraints.NotEmpty;
 
 import java.sql.Date;
 import java.util.Set;
@@ -10,10 +15,17 @@ import java.util.Set;
 @Table(name = "users")
 public class User {
 	private Long id;
+	
+	@NotEmpty(message = "{NotEmpty}")
 	private String username;
+	
 	private String phoneNumber;
+	
+	@Email(message = "{User.email.invalid}")
 	private String email;
 	private String address;
+	
+	@Size(min=6, max=10, message="{Size.userForm.password}")
 	private String password;
 	private String passwordConfirm;
 	private Date createAt;

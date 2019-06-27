@@ -49,6 +49,8 @@
 									
 								</h3>
 							</div>
+							<div th:if="${message}" th:text="${message}" th:class="${'alert ' + alertClass}"></div>
+							
 							<!-- /.box-header -->
 							<div class="box-body">
 								<table id="example1" class="table table-bordered table-striped">
@@ -65,12 +67,16 @@
 											<td th:text="${car.numberOfSeater}"></td>
 											<td th:text="${car.licensePlate}"></td>
 											<td>
+											  <a th:href="@{'/admin/cars/edit'(id=${car.id})}">
 												<button type="button" class="btn btn-default pull-right">
 													<i class="fa fa-pencil"></i>
 												</button>
+												</a>
+												<a th:href="@{'/admin/cars/delete'(id=${car.id})}">
 												<button type="button" class="btn btn-default pull-right">
 													<i class="fa fa-trash"></i>
 												</button>
+												</a>
 												<button type="button" class="btn btn-default pull-right">
 													<i class="fa fa-gg"></i>
 												</button>

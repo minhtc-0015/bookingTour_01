@@ -25,26 +25,13 @@ import app.validator.CarValidator;
 
 @RequestMapping("admin/cars/")
 @Controller
-public class CarController {
+public class CarController extends BaseController {
 
 	@Autowired
 	private CarService carService;
 	
 	@Autowired
 	private CarValidator carValidator;
-
-	
-	public Properties getProperties() {
-		Properties prop = new Properties();
-		 try (InputStream input = new FileInputStream("src/main/resources/messages.properties")) {
-	            prop.load(input);
-
-	            return prop;
-		    } catch (IOException ex) {
-	            ex.printStackTrace();
-	        }
-            return prop;
-	}
 	
 	@RequestMapping(value = { "/" }, method = RequestMethod.GET)
 	public ModelAndView home() {
@@ -68,12 +55,10 @@ public class CarController {
          if (carValidator.validate(car, result)) {
 			return "admin/cars/add";
 		}
-
-         Properties prop = getProperties();
          
 		status.setComplete();
 		carService.saveOrUpdate(car);
-		redirectAttributes.addFlashAttribute("message", prop.getProperty("sucess.saveCar"));
+		redirectAttributes.addFlashAttribute("message", getProperties().getProperty("sucess.saveCar"));
 		redirectAttributes.addFlashAttribute("alertClass", "alert-success");
 		return "redirect:/admin/cars/new/";
 	}
@@ -82,11 +67,9 @@ public class CarController {
 	public ModelAndView editCustomerForm(@RequestParam int id,RedirectAttributes redirectAttributes) {
 		ModelAndView mav = new ModelAndView("admin/cars/edit");
 		Car car = carService.findById(id);			
-	    
-		Properties prop = getProperties();
 		
 		if(car == null) {
-		    redirectAttributes.addFlashAttribute("message", prop.getProperty("error.findCar"));
+		    redirectAttributes.addFlashAttribute("message",getProperties().getProperty("error.findCar"));
 		    redirectAttributes.addFlashAttribute("alertClass", "alert-danger");
 		  return mav;  
 		}
@@ -100,9 +83,7 @@ public class CarController {
 	public String deleteCustomerForm(@RequestParam int id,RedirectAttributes redirectAttributes) {
 		carService.deleteCar(id);
 		
-		Properties prop = getProperties();
-		
-		redirectAttributes.addFlashAttribute("message", prop.getProperty("sucess.deleteCar"));
+		redirectAttributes.addFlashAttribute("message", getProperties().getProperty("sucess.deleteCar"));
 		redirectAttributes.addFlashAttribute("alertClass", "alert-success");
 		return "redirect:/admin/cars/";
 	}

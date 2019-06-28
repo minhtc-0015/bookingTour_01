@@ -10,4 +10,8 @@ public interface UserService extends BaseService<Integer, User> {
 	boolean deleteUser(Integer id);
 
 	List<User> loadUsers();
+	User findByUser(String username);
+	User checkLogin(String username, String password);
+	
+	
 }

@@ -30,25 +30,27 @@ public class BaseController {
 		
 		return count / Constants.PAGESIZE + 1;
 	}
-    
-	public Model setPaginationModelObject(int pageNumber,long end,Model model) {
+
+	public Model setPaginationModelObject(int pageNumber, long end, Model model) {
 		long begin = Constants.BEGINPAGEFIRST;
 		long limitpage = 0;
-		
-		if(end < Constants.LIMITOFPAGELOAD) limitpage = end;
+
+		if (end < Constants.LIMITOFPAGELOAD)
+			limitpage = end;
 		else {
 			limitpage = Constants.LIMITOFPAGELOAD;
-		if(pageNumber >= (limitpage + begin)) {
-			begin = (begin+limitpage)*(pageNumber/limitpage);
-			limitpage = limitpage+(begin - 1);
-			if(limitpage > end) limitpage = end;
-		}
+			if (pageNumber >= (limitpage + begin)) {
+				begin = (begin + limitpage) * (pageNumber / limitpage);
+				limitpage = limitpage + (begin - 1);
+				if (limitpage > end)
+					limitpage = end;
+			}
 		}
 		model.addAttribute("beginIndex", begin);
 		model.addAttribute("endIndex", limitpage);
 		model.addAttribute("currentIndex", pageNumber);
 		model.addAttribute("totalPageCount", end);
-		
+
 		return model;
 	}
 }

@@ -4,7 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import app.dao.ToursDao;
 
-public class ToursBaseServiceImpl  {
+public class ToursBaseServiceImpl {
 	@Autowired
 	protected ToursDao toursDAO;
 

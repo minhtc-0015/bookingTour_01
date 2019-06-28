@@ -15,7 +15,7 @@ public class ToursServiceImpl extends ToursBaseServiceImpl implements ToursServi
 			return null;
 		}
 	}
-	
+
 	@Override
 	public List<Tours> loadTours() {
 		try {

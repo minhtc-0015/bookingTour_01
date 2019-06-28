@@ -7,58 +7,58 @@ import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
-import javax.persistence.Table;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.persistence.Table;
 
 @Entity
-@Table(name="tours")
-public class Tours{
-	
+
+@Table(name = "tours")
+public class Tours {
+
 	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
-	@Column(name="id")
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	@Column(name = "id")
 	private Integer tourId;
-	
-	@Column(name="title")
+
+	@Column(name = "title")
 	private String tourTitle;
-	
-	@Column(name="description")
+
+	@Column(name = "description")
 	private String tourDescription;
-	
-	@Column(name="status")
+
+	@Column(name = "status")
 	private Integer tourStatus;
-	
-	@Column(name="image")
+
+	@Column(name = "image")
 	private String tourImage;
-	
-	@Column(name="price")
+
+	@Column(name = "price")
 	private Integer tourPrice;
-	
-	
+
 	@ManyToOne
-	  @JoinColumn(name = "id_from", nullable = false)
+	@JoinColumn(name = "id_from", nullable = false)
 	private Places from;
-	
+
 	@ManyToOne
-	  @JoinColumn(name = "id_destination", nullable = false)
+	@JoinColumn(name = "id_destination", nullable = false)
 	private Places destination;
-	
+
 	@ManyToOne
-	  @JoinColumn(name = "car_id")
+	@JoinColumn(name = "car_id")
 	private Car car;
 
-	@Column(name="rating")
+	@Column(name = "rating")
 	private Integer tourRating;
 
-	@Column(name="saleoff")
+	@Column(name = "saleoff")
 	private Integer tourSaleOff;
-	
+
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "tour")
-	 private List<TourDetails> tourdetails;
-	
+	private List<TourDetails> tourdetails;
+
 	public List<TourDetails> getTourdetails() {
 		return tourdetails;
 	}
@@ -106,8 +106,7 @@ public class Tours{
 	public void setDestination(Places destination) {
 		this.destination = destination;
 	}
-	
-	
+
 	public Integer getTourRating() {
 		return tourRating;
 	}

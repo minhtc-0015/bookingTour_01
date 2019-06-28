@@ -1,11 +1,6 @@
 package app.controller;
 
-import java.io.FileInputStream;
-import java.io.IOException;
-import java.io.InputStream;
-import java.util.List;
 import java.util.Map;
-import java.util.Properties;
 
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
@@ -21,29 +16,25 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import app.controller.admin.BaseController;
 import app.model.User;
+import app.service.RoleService;
 import app.service.UserService;
 
 @Controller
-public class AuthController {
+public class AuthController extends BaseController{
 	public UserService getUserService() {
 		return userService;
+	}
+	public RoleService getRoleService() {
+		return roleService;
 	}
 	
 	@Autowired
     private UserService userService;
 	
-	private Properties getProperties() {
-		Properties prop = new Properties();
-		 try (InputStream input = new FileInputStream("src/main/resources/messages.properties")) {
-	            prop.load(input);
-
-	            return prop;
-		    } catch (IOException ex) {
-	            ex.printStackTrace();
-	        }
-            return prop;
-	}
+	@Autowired
+    private RoleService roleService;
 	
 	@RequestMapping(value = "/login", method = RequestMethod.GET)
 	public String login(Map<String, Object> model) {
@@ -60,8 +51,8 @@ public class AuthController {
 			session.setAttribute("current_user", user1.getUsername());
 			return "index";
 		}
-		Properties prop = getProperties();
-		modelMap.put("message_login", prop.getProperty("error.login"));
+		
+		modelMap.put("message_login", getProperties().getProperty("error.login"));
 		return "login";
 	}
 	
@@ -69,5 +60,21 @@ public class AuthController {
 	public String logout(HttpSession session) {
 		session.removeAttribute("current_user");
 		return "redirect:/index";
+	}
+	
+	//-------------------- REGISTER --------------------------
+	@RequestMapping(value = "/register", method = RequestMethod.GET)
+	public String register(Model model) {
+		model.addAttribute("userForm", new User());
+		return "register";
+	}
+	
+	@RequestMapping(value = "/register", method = RequestMethod.POST)
+	public String register(@ModelAttribute("userForm") User userForm, BindingResult result, Model model) {
+		if (result.hasErrors()) {
+            return "register";
+        }
+		getUserService().createUser(userForm);
+		return "redirect:/login";
 	}
 }

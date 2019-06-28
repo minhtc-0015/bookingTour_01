@@ -38,7 +38,7 @@
 								
 								<span th:if="${session.current_user} == null">
 									<li><a th:href="@{/login}">Login</a></li>
-									<li><a href="#">Sign up</a></li>
+									<li><a th:href="@{/register}">Sign up</a></li>
 								</span>
 								<span th:if="${session.current_user} != ''" >
 									<li class="has-dropdown"><a th:text="${session.current_user}"></a>

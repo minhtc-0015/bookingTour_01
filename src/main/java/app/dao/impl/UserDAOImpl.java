@@ -8,8 +8,6 @@ import app.dao.UserDAO;
 import app.model.User;
 
 public class UserDAOImpl extends GenericDAO<Integer, User> implements UserDAO {
-
-	
 	
 	public UserDAOImpl() {
 		super(User.class);

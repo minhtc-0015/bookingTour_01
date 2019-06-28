@@ -34,7 +34,7 @@ public class CarController {
 	private CarValidator carValidator;
 
 	
-	public Properties getProperties() {
+	private Properties getProperties() {
 		Properties prop = new Properties();
 		 try (InputStream input = new FileInputStream("src/main/resources/messages.properties")) {
 	            prop.load(input);

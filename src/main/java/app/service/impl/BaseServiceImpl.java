@@ -3,6 +3,7 @@ package app.service.impl;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import app.dao.CarDAO;
+import app.dao.RoleDAO;
 import app.dao.UserDAO;
 
 public class BaseServiceImpl {
@@ -12,6 +13,17 @@ public class BaseServiceImpl {
 	
 	@Autowired
 	protected UserDAO userDAO;
+	
+	@Autowired
+	protected RoleDAO roleDAO;
+
+	public RoleDAO getRoleDAO() {
+		return roleDAO;
+	}
+
+	public void setRoleDAO(RoleDAO roleDAO) {
+		this.roleDAO = roleDAO;
+	}
 
 	public UserDAO getUserDAO() {
 		return userDAO;

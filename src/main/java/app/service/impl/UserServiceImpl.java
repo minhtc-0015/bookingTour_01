@@ -1,22 +1,29 @@
 package app.service.impl;
 
 import java.io.Serializable;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
-import app.dao.UserDAO;
+import app.model.Role;
 import app.model.User;
 import app.service.UserService;
+import app.util.DateUtil;
+import app.util.RoleUtil;
 
 public class UserServiceImpl extends BaseServiceImpl implements UserService {
 	private static final Logger logger = Logger.getLogger(UserServiceImpl.class);
 
 	@Autowired
-    private BCryptPasswordEncoder bCryptPasswordEncoder;
-	
+	private BCryptPasswordEncoder bCryptPasswordEncoder;
+
 	@Override
 	public User saveOrUpdate(User entity) {
 		try {
@@ -55,7 +62,7 @@ public class UserServiceImpl extends BaseServiceImpl implements UserService {
 			return null;
 		}
 	}
-	
+
 	@Override
 	public User findByUser(String username) {
 		try {
@@ -64,12 +71,12 @@ public class UserServiceImpl extends BaseServiceImpl implements UserService {
 			return null;
 		}
 	}
-	
+
 	@Override
 	public User checkLogin(String username, String password) {
 		try {
 			User user = getUserDAO().findByUser(username);
-			if(user != null && bCryptPasswordEncoder.matches(password, user.getPassword())) {
+			if (user != null && bCryptPasswordEncoder.matches(password, user.getPassword())) {
 				return user;
 			}
 			return null;
@@ -85,6 +92,27 @@ public class UserServiceImpl extends BaseServiceImpl implements UserService {
 			getUserDAO().delete(entity);
 			return true;
 		} catch (Exception e) {
+			throw e;
+		}
+	}
+
+	@Override
+	public User createUser(User user) {
+		try {
+			user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
+			
+			RoleUtil roleUtil = new RoleUtil();
+			
+			user.setRoles(new HashSet<>(roleUtil.roleUtil(3, "ROLE_USER")));
+
+			DateUtil dateUtil = new DateUtil();
+			java.sql.Date sqlDate = dateUtil.dateUtil("yyyy-MM-dd");
+			
+			user.setCreateAt(sqlDate);
+			user.setUpdateAt(sqlDate);
+			return getUserDAO().saveOrUpdate(user);
+		} catch (Exception e) {
+			logger.error(e);
 			throw e;
 		}
 	}

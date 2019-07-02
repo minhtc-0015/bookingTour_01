@@ -2,28 +2,30 @@
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:th="http://www.thymeleaf.org">
 <head th:fragment="head">
-	<meta charset="UTF-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>Admin HCM | User</title>
-	<!-- Tell the browser to be responsive to screen width -->
-	<meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
-	
-	<!-- starting css -->
-	<div th:replace="admin/static/css :: css">...</div>
-	<!-- end css -->
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>Admin HCM | User</title>
+<!-- Tell the browser to be responsive to screen width -->
+<meta
+	content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"
+	name="viewport">
+
+<!-- starting css -->
+<div th:replace="admin/static/css :: css">...</div>
+<!-- end css -->
 </head>
 <body class="hold-transition skin-purple sidebar-mini">
-<div class="wrapper">
-    <!-- starting header -->
-    <div th:replace="admin/static/header :: header">...</div>
-    <!-- end header -->
+	<div class="wrapper">
+		<!-- starting header -->
+		<div th:replace="admin/static/header :: header">...</div>
+		<!-- end header -->
 
-    <!-- starting leftbar -->
-    <div th:replace="admin/static/leftbar :: leftbar">...</div>
-    <!-- end leftbar -->
+		<!-- starting leftbar -->
+		<div th:replace="admin/static/leftbar :: leftbar">...</div>
+		<!-- end leftbar -->
 
-    <!--starting content -->
-    <div class="content-wrapper">
+		<!--starting content -->
+		<div class="content-wrapper">
 			<!-- Content Header (Page header) -->
 			<section class="content-header">
 				<h1>
@@ -44,48 +46,87 @@
 							<div class="box-header">
 								<h3 class="box-title">
 									<button type="button" class="btn btn-default pull-right">
-										<a th:href="@{/admin/users/new}"><i class="fa fa-plus"></i> Add</a>
+										<a th:href="@{/admin/users/new}"><i class="fa fa-plus"></i>
+											Add</a>
 									</button>
-									
+
 								</h3>
 							</div>
-							<!-- /.box-header -->
-							<div class="box-body">
-								<table id="example1" class="table table-bordered table-striped">
-									<thead>
-										<tr>
-											<th>STT</th>
-											<th>Name</th>
-											<th>Phone</th>
-											<th>Email</th>
-											<th>Address</th>
-											<th>Role</th>
-											<th>Function</th>
-										</tr>
-									</thead>
-									<tbody>
-										<tr th:each="user : ${users}">
-											<td th:text=${user.id}></td>
-											<td th:text=${user.username}></td>
-											<td th:text=${user.phoneNumber}></td>
-											<td th:text=${user.email}></td>
-											<td th:text=${user.address}></td>
-											<td>Admin</td>
-											<td>
-												<button type="button" class="btn btn-default pull-right">
-													<i class="fa fa-pencil"></i>
-												</button>
-												<button type="button" class="btn btn-default pull-right">
-													<i class="fa fa-trash"></i>
-												</button>
-												<button type="button" class="btn btn-default pull-right">
-													<i class="fa fa-gg"></i>
-												</button>
-											</td>
-										</tr>
-									</tbody>
-								</table>
-							</div>
+							<th:block th:if="${#lists.isEmpty(list.pageList)}">
+								<h3>No user be found</h3>
+							</th:block>
+
+							<th:block th:unless="${ #lists.isEmpty(list.pageList)}">
+								<!-- /.box-header -->
+								<div class="box-body">
+									<table id="example1" class="table table-bordered table-striped">
+										<thead>
+											<tr>
+												<th>STT</th>
+												<th>Name</th>
+												<th>Phone</th>
+												<th>Email</th>
+												<th>Address</th>
+												<th>Role</th>
+												<th>Function</th>
+											</tr>
+										</thead>
+										<tbody>
+											<tr th:each="user : ${list.pageList}">
+												<td th:text=${list.pageList.indexOf(user)}></td>
+												<td th:text=${user.username}></td>
+												<td th:text=${user.phoneNumber}></td>
+												<td th:text=${user.email}></td>
+												<td th:text=${user.address}></td>
+												<td>Admin</td>
+												<td>
+													<button type="button" class="btn btn-default pull-right">
+														<i class="fa fa-pencil"></i>
+													</button>
+													<button type="button" class="btn btn-default pull-right">
+														<i class="fa fa-trash"></i>
+													</button>
+													<button type="button" class="btn btn-default pull-right">
+														<i class="fa fa-gg"></i>
+													</button>
+												</td>
+											</tr>
+										</tbody>
+									</table>
+								</div>
+
+								<ul class="pagination">
+									<li
+										th:class="${currentIndex == 1? 'page-item disabled' : 'page-item'}">
+										<a class="page-link" th:href="@{/admin/users/index}">First</a>
+									</li>
+									<li
+										th:class="${currentIndex == 1? 'page-item disabled': 'page-item' }">
+										<a class="page-link" aria-label="Previous"
+										th:href="@{${currentIndex - 1}}" title='Go to previous page'><span
+											aria-hidden="true">«</span> <span class="sr-only">Previous</span></a>
+									</li>
+									<li th:each="item : ${#numbers.sequence(beginIndex,endIndex)}"
+										th:class="${item == currentIndex ? 'page-item active' :'page-item' }">
+										<a class="page-link" th:href="@{${item}}"> <span
+											th:text='${item}'>1</span>
+									</a>
+									</li>
+									<li
+										th:class="${currentIndex == totalPageCount? 'page-item disabled': 'page-item'}">
+										<a class="page-link" aria-label="Next"
+										th:href="@{${currentIndex + 1}}" title='Go to next page'><span
+											aria-hidden="true">»</span> <span class="sr-only">Next</span></a>
+									</li>
+									<li
+										th:class="${currentIndex == totalPageCount? 'page-item disabled':'page-item'}">
+										<a class="page-link" th:href="@{${totalPageCount}}">Last</a>
+									</li>
+								</ul>
+
+
+
+							</th:block>
 							<!-- /.box-body -->
 						</div>
 						<!-- /.box -->
@@ -96,22 +137,22 @@
 			</section>
 			<!-- /.content -->
 		</div>
-    <!-- end content -->
+		<!-- end content -->
 
-    <!-- starting footer -->
-    <div th:replace="admin/static/footer :: footer">...</div>
-    <!-- end footer -->
+		<!-- starting footer -->
+		<div th:replace="admin/static/footer :: footer">...</div>
+		<!-- end footer -->
 
-    <!-- starting right bar -->
-    <div th:replace="admin/static/rightbar :: rightbar">...</div>
-    <!-- end rightbar -->
+		<!-- starting right bar -->
+		<div th:replace="admin/static/rightbar :: rightbar">...</div>
+		<!-- end rightbar -->
 
-    <div class="control-sidebar-bg"></div>
-</div>
-<!-- ./wrapper -->
+		<div class="control-sidebar-bg"></div>
+	</div>
+	<!-- ./wrapper -->
 
-<!-- starting js -->
-<div th:replace="admin/static/js :: js">...</div>
-<!-- end js -->
+	<!-- starting js -->
+	<div th:replace="admin/static/js :: js">...</div>
+	<!-- end js -->
 </body>
 </html>

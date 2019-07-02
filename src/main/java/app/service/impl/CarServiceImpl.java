@@ -2,9 +2,7 @@ package app.service.impl;
 
 import java.io.Serializable;
 import java.util.List;
-
 import org.apache.log4j.Logger;
-
 import app.model.Car;
 import app.service.CarService;
 
@@ -33,9 +31,9 @@ public class CarServiceImpl extends BaseServiceImpl implements CarService {
 	}
 
 	@Override
-	public List<Car> loadCars() {
+	public List<Car> loadCars(Integer offfset, Integer maxResults) {
 		try {
-			return getCarDAO().loadCars();
+			return getCarDAO().loadCars(offfset, maxResults);
 		} catch (Exception e) {
 			return null;
 		}
@@ -57,6 +55,16 @@ public class CarServiceImpl extends BaseServiceImpl implements CarService {
 			return true;
 		} catch (Exception e) {
 			throw e;
+		}
+	}
+
+	@SuppressWarnings("null")
+	@Override
+	public long countCar() {
+		try {
+			return getCarDAO().countCar();
+		} catch (Exception e) {
+			return (Long) null;
 		}
 	}
 }

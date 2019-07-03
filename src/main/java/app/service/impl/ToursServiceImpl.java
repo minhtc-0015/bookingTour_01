@@ -6,13 +6,32 @@ import java.util.List;
 import app.model.Tours;
 import app.service.ToursService;
 
-public class ToursServiceImpl extends ToursBaseServiceImpl implements ToursService{
+public class ToursServiceImpl extends ToursBaseServiceImpl implements ToursService {
+	@Override
+	public List<Tours> loadTours(Integer offset, Integer maxresults) {
+		try {
+			return getToursDAO().listTours(offset, maxresults);
+		} catch (Exception e) {
+			return null;
+		}
+	}
+	
 	@Override
 	public List<Tours> loadTours() {
 		try {
 			return getToursDAO().listTours();
 		} catch (Exception e) {
 			return null;
+		}
+	}
+
+	@SuppressWarnings("null")
+	@Override
+	public long count() {
+		try {
+			return getToursDAO().countTour();
+		} catch (Exception e) {
+			return (Long) null;
 		}
 	}
 

@@ -2,12 +2,15 @@ package app.service.impl;
 
 import java.io.Serializable;
 import java.util.HashSet;
+import java.util.LinkedHashSet;
 import java.util.List;
+import java.util.Set;
 
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
+import app.model.Role;
 import app.model.User;
 import app.service.UserService;
 import app.util.DateUtil;
@@ -102,13 +105,10 @@ public class UserServiceImpl extends BaseServiceImpl implements UserService {
 	}
 
 	@Override
-	public User createUser(User user) {
+	public User createUser(User user, Set<Role> setRole) {
 		try {
 			user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
-			
-			RoleUtil roleUtil = new RoleUtil();
-			
-			user.setRoles(new HashSet<>(roleUtil.roleUtil(3, "ROLE_USER")));
+			user.setRoles(setRole);
 
 			DateUtil dateUtil = new DateUtil();
 			java.sql.Date sqlDate = dateUtil.dateUtil("yyyy-MM-dd");
@@ -121,5 +121,27 @@ public class UserServiceImpl extends BaseServiceImpl implements UserService {
 			throw e;
 		}
 	}
-
+	
+	@Override
+	public void createUserAdmin(User user) {
+		// Lưu mảng role nếu 1 user có nhiều role
+		Set<Role> setRole = new LinkedHashSet<Role>();
+		for(Role role: user.getRoles()){
+			String roleName = role.getName();
+			int roleId = 0;
+			if(roleName.equals("ROLE_ADMIN")) roleId = 1;
+			else if(roleName.equals("ROLE_EDITOR")) roleId = 2;
+			else {roleId = 2; roleName = "ROLE_EDITOR";}
+			setRole.add(new Role(roleId,  roleName));
+		}
+		createUser(user, setRole);
+	}
+	
+	@Override
+	public void createUserPublic(User user) {
+		Set<Role> setRole = new HashSet<Role>();
+		setRole.add(new Role(3,  "ROLE_USER"));
+		createUser(user, setRole);
+	}
+	
 }

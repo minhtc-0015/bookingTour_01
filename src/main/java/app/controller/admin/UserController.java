@@ -10,9 +10,12 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import app.helper.Constants;
+import app.model.Role;
 import app.model.User;
 import app.service.UserService;
 
@@ -47,7 +50,6 @@ public class UserController extends BaseController {
 		} else if (pageNumber <= end && pageNumber > 0) {
 			pages = new PagedListHolder<>(userService.loadUsers((pageNumber - 1) * pageSize, pageSize));
 		}
-
 		model.addAttribute("page", pages);
 
 		return mov;
@@ -61,8 +63,24 @@ public class UserController extends BaseController {
 	}
 
 	@RequestMapping(value = "/create", method = RequestMethod.POST)
-	public String add(@ModelAttribute("user") User user) {
-		userService.saveOrUpdate(user);
-		return "redirect:/admin/user/";
+	public String add(@ModelAttribute("userForm") User userForm, RedirectAttributes redirectAttributes) {
+		userService.createUserAdmin(userForm);
+		redirectAttributes.addFlashAttribute("message", getProperties().getProperty("sucess.saveUser"));
+		redirectAttributes.addFlashAttribute("alertClass", "alert-success");
+		return "redirect:/admin/users/index/page/1";
+	}
+	
+	@RequestMapping(value = "/{id}/delete", method = RequestMethod.GET)
+	public String delete(@PathVariable Long id, @RequestParam int idPage,
+			RedirectAttributes redirectAttributes) {
+
+		if(userService.deleteUser(id)) {
+			redirectAttributes.addFlashAttribute("message", getProperties().getProperty("sucess.deleteUser"));
+			redirectAttributes.addFlashAttribute("alertClass", "alert-success");
+		} else {
+			redirectAttributes.addFlashAttribute("message", getProperties().getProperty("error.deleteUser"));
+			redirectAttributes.addFlashAttribute("alertClass", "alert-danger");
+		}
+		return "redirect:/admin/users/index/page/" + idPage;
 	}
 }

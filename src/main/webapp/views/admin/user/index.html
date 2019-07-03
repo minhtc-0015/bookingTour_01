@@ -51,6 +51,8 @@
 									</button>
 
 								</h3>
+								<div th:if="${message}" th:text="${message}"
+									th:class="${'alert ' + alertClass}"></div>
 							</div>
 							<th:block th:if="${#lists.isEmpty(page.pageList)}">
 								<h3>No user be found</h3>
@@ -83,9 +85,11 @@
 													<button type="button" class="btn btn-default pull-right">
 														<i class="fa fa-pencil"></i>
 													</button>
-													<button type="button" class="btn btn-default pull-right">
-														<i class="fa fa-trash"></i>
-													</button>
+													<a th:href="@{'/admin/users/'+${user.id} +'/delete'(idPage=${currentIndex}) }">
+														<button type="button" class="btn btn-default pull-right">
+															<i class="fa fa-trash"></i>
+														</button>
+													</a>
 													<button type="button" class="btn btn-default pull-right">
 														<i class="fa fa-gg"></i>
 													</button>

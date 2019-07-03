@@ -13,8 +13,8 @@ import org.springframework.web.servlet.ModelAndView;
 import app.model.Tours;
 import app.service.ToursService;
 
-@Controller
-public class index {
+@Controller("CatalogTextureController")
+public class indexController {
 	@Autowired
 	private ToursService toursService;
 	

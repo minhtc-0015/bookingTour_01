@@ -48,7 +48,7 @@ public class AuthController extends BaseController{
 		User user1 = getUserService().checkLogin(user.getUsername(), user.getPassword());
 		if(user1 != null) {
 			session.setAttribute("current_user", user1.getUsername());
-			return "index";
+			return "redirect:/";
 		}
 		
 		modelMap.put("message_login", getProperties().getProperty("error.login"));
@@ -58,10 +58,9 @@ public class AuthController extends BaseController{
 	@RequestMapping(value = "/logout", method = RequestMethod.GET)
 	public String logout(HttpSession session) {
 		session.removeAttribute("current_user");
-		return "redirect:/index";
+		return "redirect:/";
 	}
 	
-	//-------------------- REGISTER --------------------------
 	@RequestMapping(value = "/register", method = RequestMethod.GET)
 	public String register(Model model) {
 		model.addAttribute("userForm", new User());
@@ -73,7 +72,7 @@ public class AuthController extends BaseController{
 		if (result.hasErrors()) {
             return "register";
         }
-		getUserService().createUser(userForm);
+		getUserService().createUserPublic(userForm);
 		return "redirect:/login";
 	}
 }

@@ -14,8 +14,4 @@ public class ToursController {
 	@Autowired
 	private ToursService toursService;
 	
-	@RequestMapping(value = {"/"}, method = RequestMethod.GET)
-	public String home() {
-       return "tours";
-	}
 }

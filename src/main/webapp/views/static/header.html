@@ -14,8 +14,8 @@
 						</div>
 						<div class="col-xs-10 text-right menu-1">
 							<ul>
-								<li class="active"><a href="index.html">Home</a></li>
-								<li class="has-dropdown"><a href="tours.html">Tours</a>
+								<li class="active"><a th:href="@{/}">Home</a></li>
+								<li class="has-dropdown"><a th:href="@{/tours/}">Tours</a>
 									<ul class="dropdown">
 										<li><a href="#">Destination</a></li>
 										<li><a href="#">Cruises</a></li>
@@ -28,14 +28,14 @@
 								<li><a href="blog.html">Blog</a></li>
 								<li><a href="about.html">About</a></li>
 								<li><a href="contact.html">Contact</a></li>
-								
-							
-							
+
+
+
 								 <!--
 								<p th:text="${uname}">ahihi</p>
 								<p th:text="${sessionScope.usernameTEO}">ahihi</p>
 								 -->
-								
+
 								<span th:if="${session.current_user} == null">
 									<li><a th:href="@{/login}">Login</a></li>
 									<li><a th:href="@{/register}">Sign up</a></li>
@@ -54,7 +54,7 @@
 				</div>
 			</div>
 		</nav>
-		
+
 
 </div>
 

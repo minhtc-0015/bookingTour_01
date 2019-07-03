@@ -51,6 +51,11 @@
 							</div>
 							<div th:if="${message}" th:text="${message}" th:class="${'alert ' + alertClass}"></div>
 							
+							<th:block th:if="${#lists.isEmpty(page.pageList)}">
+								<h3>No car be found</h3>
+							</th:block>
+							
+							<th:block th:unless="${ #lists.isEmpty(page.pageList)}">
 							<!-- /.box-header -->
 							<div class="box-body">
 								<table id="example1" class="table table-bordered table-striped">
@@ -71,8 +76,8 @@
 										</tr>
 									</thead>
 									<tbody>
-										<tr th:each="tour : ${tours}">
-											<td th:text=${tour.tourId}></td>
+											<tr th:each="tour : ${page.pageList}">
+											<td th:text=${page.pageList.indexOf(tour)}></td>
 											<td th:text=${tour.tourTitle}></td>
 											<td th:text=${tour.tourDescription}></td>
 											<td th:text=${tour.tourStatus}></td>
@@ -117,6 +122,38 @@
 								</table>
 							</div>
 							<!-- /.box-body -->
+							
+								<ul class="pagination">
+									<li
+										th:class="${currentIndex == 1? 'page-item disabled' : 'page-item'}">
+										<a class="page-link" th:href="@{/admin/tours/index}">First</a>
+									</li>
+									<li
+										th:class="${currentIndex == 1? 'page-item disabled': 'page-item' }">
+										<a class="page-link" aria-label="Previous"
+										th:href="@{${currentIndex - 1}}" title='Go to previous page'><span
+											aria-hidden="true">«</span> <span class="sr-only">Previous</span></a>
+									</li>
+									<li th:each="item : ${#numbers.sequence(beginIndex,endIndex)}"
+										th:class="${item == currentIndex ? 'page-item active' :'page-item' }">
+										<a class="page-link" th:href="@{${item}}"> <span
+											th:text='${item}'>1</span>
+									</a>
+									</li>
+									<li
+										th:class="${currentIndex == totalPageCount? 'page-item disabled': 'page-item'}">
+										<a class="page-link" aria-label="Next"
+										th:href="@{${currentIndex + 1}}" title='Go to next page'><span
+											aria-hidden="true">»</span> <span class="sr-only">Next</span></a>
+									</li>
+									<li
+										th:class="${currentIndex == totalPageCount? 'page-item disabled':'page-item'}">
+										<a class="page-link" th:href="@{${totalPageCount}}">Last</a>
+									</li>
+								</ul>
+
+
+							</th:block>
 						</div>
 						<!-- /.box -->
 					</div>

@@ -7,6 +7,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
@@ -21,7 +22,6 @@ public class ToursController extends BaseController {
 	@Autowired
 	private ToursService toursService;
 
-	@Autowired
 
 	@RequestMapping(value = { "/", "index" }, method = RequestMethod.GET)
 	public String home() {
@@ -29,7 +29,8 @@ public class ToursController extends BaseController {
 	}
 
 	@RequestMapping(value = { "/index/page/{pageNumber}" }, method = RequestMethod.GET)
-	public ModelAndView index(@PathVariable int pageNumber, Model model) {
+	public ModelAndView index(@RequestParam(required = false, name = "search") String search,
+			@PathVariable int pageNumber, Model model) {
 
 		int pageSize = Constants.PAGESIZE;
 
@@ -37,15 +38,16 @@ public class ToursController extends BaseController {
 
 		PagedListHolder<?> pages = new PagedListHolder<>();
 
-		long count = toursService.count();
+		long count = toursService.count(search);
+
 		long end = setEndPagination(count);
 
 		setPaginationModelObject(pageNumber, end, model);
 
 		if (pageNumber == 1) {
-			pages = new PagedListHolder<>(toursService.loadTours(null, null));
+			pages = new PagedListHolder<>(toursService.loadTours(search, null, null));
 		} else if (pageNumber <= end && pageNumber > 0) {
-			pages = new PagedListHolder<>(toursService.loadTours((pageNumber - 1) * pageSize, pageSize));
+			pages = new PagedListHolder<>(toursService.loadTours(search, (pageNumber - 1) * pageSize, pageSize));
 		}
 
 		model.addAttribute("page", pages);

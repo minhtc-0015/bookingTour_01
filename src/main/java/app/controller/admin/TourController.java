@@ -32,15 +32,15 @@ public class TourController extends BaseController {
 
 		PagedListHolder<?> pages = new PagedListHolder<>();
 
-		long count = toursService.count();
+		long count = toursService.count(null);
 		long end = setEndPagination(count);
 
 		setPaginationModelObject(pageNumber, end, model);
 
 		if (pageNumber == 1) {
-			pages = new PagedListHolder<>(toursService.loadTours(null, null));
+			pages = new PagedListHolder<>(toursService.loadTours(null, null, null));
 		} else if (pageNumber <= end && pageNumber > 0) {
-			pages = new PagedListHolder<>(toursService.loadTours((pageNumber - 1) * pageSize, pageSize));
+			pages = new PagedListHolder<>(toursService.loadTours(null, (pageNumber - 1) * pageSize, pageSize));
 		}
 
 		model.addAttribute("page", pages);

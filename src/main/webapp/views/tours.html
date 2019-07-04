@@ -69,6 +69,7 @@
 			<h3>No tour be found</h3>
 		</th:block>
 
+
 		<div class="colorlib-wrap">
 			<div class="container">
 				<div class="row">
@@ -76,6 +77,13 @@
 
 						<th:block th:unless="${ #lists.isEmpty(page.pageList)}">
 							<div class="row">
+
+								<form class="form-inline form-tour-search-box" th:action="@{'/tours/index/page/1'}">
+										<input type="text" class="form-control form-search-input" placeholder="Tour name" th:name="search">
+										<button type="submit" class="btn btn-info pull-right"
+													value="Save">Search</button>
+								</form>
+
 								<div th:each="tour : ${page.pageList}" class="wrap-division">
 
 
@@ -110,7 +118,7 @@
 									<ul class="pagination">
 										<li
 											th:class="${currentIndex == 1? 'page-item disabled' : 'page-item'}">
-											<a class="page-link" th:href="@{/tours/index}">First</a>
+											<a class="page-link" th:href="@{/tours/index/}">First</a>
 										</li>
 										<li
 											th:class="${currentIndex == 1? 'page-item disabled': 'page-item' }">

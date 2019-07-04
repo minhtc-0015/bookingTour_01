@@ -8,9 +8,9 @@ import app.service.ToursService;
 
 public class ToursServiceImpl extends ToursBaseServiceImpl implements ToursService {
 	@Override
-	public List<Tours> loadTours(Integer offset, Integer maxresults) {
+	public List<Tours> loadTours(String search,Integer offset, Integer maxresults) {
 		try {
-			return getToursDAO().listTours(offset, maxresults);
+			return getToursDAO().listTours(search,offset, maxresults);
 		} catch (Exception e) {
 			return null;
 		}
@@ -27,9 +27,9 @@ public class ToursServiceImpl extends ToursBaseServiceImpl implements ToursServi
 
 	@SuppressWarnings("null")
 	@Override
-	public long count() {
+	public long count(String search) {
 		try {
-			return getToursDAO().countTour();
+			return getToursDAO().countTour(search);
 		} catch (Exception e) {
 			return (Long) null;
 		}

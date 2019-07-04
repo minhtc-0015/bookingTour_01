@@ -11,25 +11,26 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 @Entity
-@Table(name="tour_details")
+@Table(name = "tour_details")
 public class TourDetails {
-
 	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
-	@Column(name="id")
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "id")
 	private Integer tourDetailsId;
-	
-	@Column(name="tour_date")
-	private Date tourDetailsDate;
-	
-	 @ManyToOne
-	 @JoinColumn(name = "tour_id", nullable = false)
-	 private Tours tour;	
-	
-	@Column(name="num_person")
-	private Integer tourDetailsNumPerson;
 
+	@Column(name = "tour_date")
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
+	private Date tourDetailsDate;
+
+	@ManyToOne
+	@JoinColumn(name = "tour_id", nullable = false)
+	private Tours tour;
+
+	@Column(name = "num_person")
+	private Integer tourDetailsNumPerson;
 
 	public Integer getTourDetailsId() {
 		return tourDetailsId;

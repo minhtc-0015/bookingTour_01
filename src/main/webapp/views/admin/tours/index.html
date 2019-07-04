@@ -52,7 +52,7 @@
 							<div th:if="${message}" th:text="${message}" th:class="${'alert ' + alertClass}"></div>
 							
 							<th:block th:if="${#lists.isEmpty(page.pageList)}">
-								<h3>No car be found</h3>
+								<h3>No tour be found</h3>
 							</th:block>
 							
 							<th:block th:unless="${ #lists.isEmpty(page.pageList)}">
@@ -95,7 +95,7 @@
 											<td th:text=${tour.tourRating}></td>
 											<td th:text=${tour.tourSaleOff}></td>
 											<td >
-												<a th:href="@{'/admin/tourdetails'(id=${tour.tourId})}">
+												<a th:href="@{'/admin/tourdetails/tourdetail'(id=${tour.tourId})}">
 													<button type="button" class="btn btn-default pull-right">
 														<i class="fa fa-pencil"></i>
 													</button>

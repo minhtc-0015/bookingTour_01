@@ -1,9 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://www.springframework.org/schema/beans
-    http://www.springframework.org/schema/beans/spring-beans.xsd">
-
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+	
 	<bean id="carDAO" class="app.dao.impl.CarDAOImpl">
 		<property name="sessionFactory" ref="sessionFactory" />
 	</bean>
@@ -17,9 +16,14 @@
 	</bean>
 	
 	<bean id="toursDAO" class="app.dao.impl.ToursDAOImpl">
-
+		
 		<property name="sessionFactory" ref="sessionFactory" />
 	</bean>
-
+	
+	<bean id="tourDetailsDAO" class="app.dao.impl.TourDetailsDAOImpl">
+		
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	
 	<bean id="bCryptPasswordEncoder" class="org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder"/>
 </beans>

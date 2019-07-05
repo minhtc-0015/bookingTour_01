@@ -23,5 +23,5 @@
 hs_err_pid*
 
 /datasources.properties
-/target/
+target/
 /inputFiles.lst

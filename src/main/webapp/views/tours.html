@@ -66,7 +66,7 @@
 		</aside>
 
 		<th:block th:if="${#lists.isEmpty(page.pageList)}">
-			<h3>No car be found</h3>
+			<h3>No tour be found</h3>
 		</th:block>
 
 		<div class="colorlib-wrap">
@@ -81,7 +81,7 @@
 
 									<div class="col-md-6 col-sm-6 animate-box">
 										<div class="tour">
-											<a href="tour-place.html" class="tour-img"
+											<a th:href="@{'/tours/'+${tour.tourId}}" class="tour-img"
 												th:style="'background-image:url(' + @{'/assets/images/'+${tour.tourImage}} + ');'">
 												<p class="price">
 													<span th:text=${tour.tourPrice}></span>$ <small>/ Saleoff
